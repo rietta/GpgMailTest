@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe EncryptedMailInterceptor do
+RSpec.describe 'EncryptedMailInterceptor' do
   it 'Encrypts a presented message' do
     interceptor = EncryptedMailInterceptor.new(EncryptedHelloWorldMailer.hello)
     expect {
