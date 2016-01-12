@@ -5,6 +5,7 @@ class EncryptedMailInterceptor
   PGP_OPENING     = '-----BEGIN PGP MESSAGE-----'
   PGP_ENDING      = '-----END PGP MESSAGE-----'
   PGP_MIME_TYPE   = 'application/pgp-encrypted'
+  MULTIPART_ERROR = 'Multi-part messages not supported!'
 
   def self.delivering_email(message)
     interceptor = EncryptedMailInterceptor.new(message)
@@ -42,7 +43,7 @@ class EncryptedMailInterceptor
   private
 
   def encrypt_message
-    fail 'Multi-part messages not supported!' unless @message.parts.count == 0
+    fail MULTIPART_ERROR unless @message.parts.count == 0
     plaintext = @message.body.raw_source
     ciphertext = encrypt_text(plaintext)
     @message.body = ciphertext

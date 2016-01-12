@@ -15,4 +15,8 @@ class EncryptedHelloWorldMailer < ApplicationMailer
     mail to: RECIPIENT_PGP_KEYS.keys, subject: "Test Encrypted HTML Message"
   end
 
+  def multi_part_expect_to_explode
+    mail to: RECIPIENT_PGP_KEYS.keys, subject: "Raise exception, don't send"
+  end
+
 end

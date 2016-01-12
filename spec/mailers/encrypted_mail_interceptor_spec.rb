@@ -34,4 +34,12 @@ RSpec.describe 'EncryptedMailInterceptor' do
       expect(ciphermessage.content_type).to eq 'application/pgp-encrypted'
     end
   end
+
+  it 'Does not support Multi-part and does not let information leak because of that' do
+    expect {
+      EncryptedMailInterceptor.delivering_email(
+        EncryptedHelloWorldMailer.multi_part_expect_to_explode
+      )
+    }.to raise_error EncryptedMailInterceptor::MULTIPART_ERROR
+  end
 end
