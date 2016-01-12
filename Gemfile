@@ -52,3 +52,4 @@ end
 # GPG Integration
 # Be sure to install GPGME too.
 gem 'gpgme'
+gem 'dotenv'
