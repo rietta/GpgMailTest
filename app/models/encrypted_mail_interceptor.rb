@@ -3,6 +3,7 @@ class EncryptedMailInterceptor
   PGP_ERROR       = 'Must be an OpenPGP encrypted message.'
   PGP_OPENING     = '-----BEGIN PGP MESSAGE-----'
   PGP_ENDING      = '-----END PGP MESSAGE-----'
+  PGP_MIME_TYPE   = 'application/pgp-encrypted'
 
   def self.delivering_email(message)
     interceptor = EncryptedMailInterceptor.new(message)
@@ -44,6 +45,7 @@ class EncryptedMailInterceptor
     plaintext = @message.body.raw_source
     ciphertext = encrypt_text(plaintext)
     @message.body = ciphertext
+    @message.content_type = PGP_MIME_TYPE
     @message
   end
 

@@ -12,4 +12,8 @@ RSpec.describe EncryptedMailInterceptor do
   it 'Implements the interceptor' do
     expect(EncryptedMailInterceptor.delivering_email(EncryptedHelloWorldMailer.hello).to_s).to include EncryptedMailInterceptor::PGP_OPENING
   end
+
+  it 'The mime type is not plain text, but encrypted' do
+    expect(EncryptedMailInterceptor.delivering_email(EncryptedHelloWorldMailer.hello).content_type).to eq 'application/pgp-encrypted'
+  end
 end
