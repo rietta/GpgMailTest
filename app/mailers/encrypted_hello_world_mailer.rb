@@ -8,7 +8,15 @@ class EncryptedHelloWorldMailer < ApplicationMailer
   def hello
     n = DateTime.now
     @greeting = "Hi\n\nThe secret number is #{SecureRandom.hex(10)}. The time is #{n}."
-
     mail to: RECIPIENT_PGP_KEYS.keys, from: 'encrypted_hello_world@example.com', subject: "Test Encrypted Message / #{n}"
   end
+
+  # def mail(opts)
+  #   message = super(opts)
+  #   raise 'Hell ' + message.parts.count
+  #   return message
+  # end
+
+
+
 end
