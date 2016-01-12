@@ -27,6 +27,8 @@ class EncryptedMailInterceptor
     m
   end
 
+  private
+
   def fail_on_plaintext(message)
     fail PGP_ERROR unless pgp_message?(message.body)
     if message.parts.any?
@@ -45,8 +47,6 @@ class EncryptedMailInterceptor
     end
   end # pgp_message?
 
-  private
-
   def encrypt_message
     fail MULTIPART_ERROR unless @message.parts.count == 0
     plaintext = @message.body.raw_source
@@ -61,7 +61,7 @@ class EncryptedMailInterceptor
     crypto.encrypt(message, recipients: recipient_keys).to_s
   end
 
-end
+end # class EncryptedMailInterceptor
 
-
+# Registers this interceptor with the Rails application.
 ActionMailer::Base.register_interceptor(EncryptedMailInterceptor)
