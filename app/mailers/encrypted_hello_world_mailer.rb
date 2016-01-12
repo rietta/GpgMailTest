@@ -11,12 +11,4 @@ class EncryptedHelloWorldMailer < ApplicationMailer
     mail to: RECIPIENT_PGP_KEYS.keys, subject: "Test Encrypted Message / #{n}"
   end
 
-  # def mail(opts)
-  #   message = super(opts)
-  #   raise 'Hell ' + message.parts.count
-  #   return message
-  # end
-
-
-
 end
