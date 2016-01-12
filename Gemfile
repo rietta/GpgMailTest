@@ -48,6 +48,8 @@ group :development do
 
 end
 
+gem 'simplecov', :require => false, :group => :test
+
 ##
 # GPG Integration
 # Be sure to install GPGME too.
