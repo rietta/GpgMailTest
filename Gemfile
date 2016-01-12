@@ -52,4 +52,4 @@ end
 # GPG Integration
 # Be sure to install GPGME too.
 gem 'gpgme'
-gem 'dotenv'
+gem 'dotenv-rails', :groups => [:development, :test, :production], :require => 'dotenv/rails-now'
