@@ -73,4 +73,6 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  RECIPIENT_PGP_KEYS={'frank@rietta.com' => '0xC004BAE3', 'brandon@rietta.com' => '0x790D8CA3'}
 end

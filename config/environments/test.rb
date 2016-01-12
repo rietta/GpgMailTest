@@ -39,4 +39,6 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  RECIPIENT_PGP_KEYS={'frank@rietta.com' => '0xC004BAE3', 'brandon@rietta.com' => '0x790D8CA3'}
 end
