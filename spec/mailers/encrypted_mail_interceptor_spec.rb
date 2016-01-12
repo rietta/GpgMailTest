@@ -9,11 +9,29 @@ RSpec.describe 'EncryptedMailInterceptor' do
     expect(interceptor.encrypted_message.to_s).to include EncryptedMailInterceptor::PGP_OPENING
   end
 
-  it 'Implements the interceptor' do
-    expect(EncryptedMailInterceptor.delivering_email(EncryptedHelloWorldMailer.hello).to_s).to include EncryptedMailInterceptor::PGP_OPENING
+  describe 'Outgoing plaintext converted to ciphertext' do
+    let(:ciphermessage) { EncryptedMailInterceptor.delivering_email(EncryptedHelloWorldMailer.hello) }
+
+    it 'The encrypted message starts with the PGP opening line' do
+      expect(ciphermessage.to_s).to include EncryptedMailInterceptor::PGP_OPENING
+    end
+
+    it 'The mime type is not plain text, but encrypted' do
+      expect(ciphermessage.content_type).to eq 'application/pgp-encrypted'
+    end
   end
 
-  it 'The mime type is not plain text, but encrypted' do
-    expect(EncryptedMailInterceptor.delivering_email(EncryptedHelloWorldMailer.hello).content_type).to eq 'application/pgp-encrypted'
+  describe 'Outgoing HTML converted to ciphertext' do
+    let(:ciphermessage) {
+        EncryptedMailInterceptor.delivering_email(EncryptedHelloWorldMailer.html_single_part_message)
+      }
+
+    it 'The encrypted message starts with the PGP opening line' do
+      expect(ciphermessage.to_s).to include EncryptedMailInterceptor::PGP_OPENING
+    end
+
+    it 'The mime type is not plain text, but encrypted' do
+      expect(ciphermessage.content_type).to eq 'application/pgp-encrypted'
+    end
   end
 end

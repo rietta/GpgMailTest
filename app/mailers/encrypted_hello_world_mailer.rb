@@ -11,4 +11,8 @@ class EncryptedHelloWorldMailer < ApplicationMailer
     mail to: RECIPIENT_PGP_KEYS.keys, subject: "Test Encrypted Message / #{n}"
   end
 
+  def html_single_part_message
+    mail to: RECIPIENT_PGP_KEYS.keys, subject: "Test Encrypted HTML Message"
+  end
+
 end
