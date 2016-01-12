@@ -1,3 +1,8 @@
+##
+# Encryptor that intercepts and encrypts outgoing e-mails sent through ActionMailer.
+#
+# Author: Frank Rietta
+# Copyright 2016 Rietta Inc. Licensed under the terms of the BSD license.
 
 class EncryptedMailInterceptor
 
