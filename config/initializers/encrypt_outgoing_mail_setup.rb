@@ -58,7 +58,7 @@ class EncryptedMailInterceptor
 
   def encrypt_text(message, recipient_keys = RECIPIENT_PGP_KEYS.values)
     crypto = GPGME::Crypto.new(armor: true)
-    crypto.encrypt(message, recipients: recipient_keys).to_s
+    crypto.encrypt(message, recipients: recipient_keys, sign: true).to_s
   end
 
 end # class EncryptedMailInterceptor
