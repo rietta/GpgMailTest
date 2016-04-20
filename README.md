@@ -1,11 +1,14 @@
 # Encrypt Outgoing E-mail using ActionMailer and GnuPG/OpenPGP/PGP
 
+## Overview
 This tech demo project is a companion to https://github.com/rietta/GpgMeTest. Whereas GpgMeTest
 focused on practical PGP encryption for storage, this focuses on implementing an application-wide
 mail interceptor that encrypts outgoing mail.
 
-## Shamir’s Law: Crypto is bypassed, not penetrated
-> Cryptography is usually bypassed. I am not aware of any major world-class security system employing cryptography in which the hackers penetrated the system by actually going through the cryptanalysis [...] usually there are much simpler ways of penetrating the security system -- Adi Shamir
+# Usage
+*encrypt_outgoing_mail_setup.rb* is added to the config/initializers. To define EncryptedMailInterceptor
+and register it as the mail interceptor for this Rails application. Once in place, the interceptor processes
+every ActionMailer message and encrypts the outgoing mail if there is a key available.
 
 ## Dependencies
 - gnupg
@@ -16,10 +19,14 @@ mail interceptor that encrypts outgoing mail.
   - sudo apt-get install libgpgme11-dev
   - brew install gpgme
 
+
+# Cryptographic Concerns
+
 ## Crypto-system in place
 This system does not invent its own crypto, but uses GnuPG, that implements the OpenPGP standard.
 
-
+## Shamir’s Law: Crypto is bypassed, not penetrated
+> Cryptography is usually bypassed. I am not aware of any major world-class security system employing cryptography in which the hackers penetrated the system by actually going through the cryptanalysis [...] usually there are much simpler ways of penetrating the security system -- Adi Shamir
 
 
 # License and Copyright
