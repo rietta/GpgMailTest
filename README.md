@@ -5,10 +5,17 @@ This tech demo project is a companion to https://github.com/rietta/GpgMeTest. Wh
 focused on practical PGP encryption for storage, this focuses on implementing an application-wide
 mail interceptor that encrypts outgoing mail.
 
-# Usage
+## Usage
 *encrypt_outgoing_mail_setup.rb* is added to the config/initializers. To define EncryptedMailInterceptor
 and register it as the mail interceptor for this Rails application. Once in place, the interceptor processes
 every ActionMailer message and encrypts the outgoing mail if there is a key available.
+
+This project only has the most basic interceptor interface defined. Once registered, the interceptor
+must process all messages, but it is not required to modify all. So presumably, one could define a plaintext mailer
+by setting a "plaintext_is_okay" header in the mailer and have the interceptor look for that.
+
+## Design Challenges
+
 
 ## Dependencies
 - gnupg
