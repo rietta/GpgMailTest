@@ -1,5 +1,25 @@
 # Encrypt Outgoing E-mail using ActionMailer and GnuPG/OpenPGP/PGP
 
+This tech demo project is a companion to https://github.com/rietta/GpgMeTest. Whereas GpgMeTest
+focused on practical PGP encryption for storage, this focuses on implementing an application-wide
+mail interceptor that encrypts outgoing mail.
+
+## Shamir’s Law: Crypto is bypassed, not penetrated
+> Cryptography is usually bypassed. I am not aware of any major world-class security system employing cryptography in which the hackers penetrated the system by actually going through the cryptanalysis [...] usually there are much simpler ways of penetrating the security system -- Adi Shamir
+
+## Dependencies
+- gnupg
+  - sudo apt-get install gpg
+  - brew install gpg
+
+- gpgme
+  - sudo apt-get install libgpgme11-dev
+  - brew install gpgme
+
+## Crypto-system in place
+This system does not invent its own crypto, but uses GnuPG, that implements the OpenPGP standard.
+
+
 
 
 # License and Copyright
